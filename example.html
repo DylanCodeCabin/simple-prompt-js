@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Prompt Example</title>
+    <link rel="stylesheet" type="text/css" href="includes/css/simple_prompt.css">
+    <style type="text/css">
+      .embed_button{
+          margin-right: 5px;
+          display: inline-block;
+          background: #e4e4e4;
+          padding: 5px 7px;
+          font-size: 0.9em;
+          border-radius: 5px;
+          cursor: pointer;
+          color: #333;
+          text-decoration: none;
+      }
+
+      .demo_container{
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        font-family: sans-serif;
+        background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+      }
+
+      .demo_container h1{
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body class='demo_container'>
+    <h1>Simple Prompt Example</h1>
+    <br><br>
+    <a href='javascript:void(0)' onclick="promptOptionsDemo()" class='embed_button'>Options Demo</a>
+    <a href='javascript:void(0)' onclick="promptInputDemo()" class='embed_button'>Input Options</a>
+  </body>
+  <script type="text/javascript" src="includes/js/simple_prompt.js"></script>
+  <script type="text/javascript">
+      function promptOptionsDemo(){
+        SimplePrompt.popup('Options Demo', 'Select an option below', [{key: 'option one', value: 'One'}, {key: 'option two', value: 'Two'}], '.demo_container')
+            .then((response) => {
+                window.alert('User selected: ' + response);
+            }).catch((err) => {
+                window.alert('Something went wrong, sorry about that!');
+            });
+      }
+
+      function promptInputDemo(){
+        SimplePrompt.input('Input Demo', 'Enter a value below:', 'Default Value', 'Send it!', 'Nah, leave it', '.demo_container')
+            .then((response) => {
+                window.alert('User entered: ' + response);
+            }).catch((err) => {
+                window.alert('Something went wrong, sorry about that!');
+            });
+      }
+  </script>
+</html>
